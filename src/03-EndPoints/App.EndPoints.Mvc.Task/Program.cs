@@ -45,8 +45,8 @@ builder.Services.AddIdentity<UserTa, IdentityRole<int>>(option =>
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = "/UserT/Login"; // „”?— ’›ÕÂ ·«ê?‰
-    options.AccessDeniedPath = "/Account/AccessDenied"; // „”?— ’›ÕÂ ⁄œ„ œ” —”?
+    options.LoginPath = "/UserT/Login"; 
+    options.AccessDeniedPath = "/Account/AccessDenied"; 
 });
 #region Register Services
 builder.Services.AddScoped<IUserTAppServices, UserTAppServices>();
