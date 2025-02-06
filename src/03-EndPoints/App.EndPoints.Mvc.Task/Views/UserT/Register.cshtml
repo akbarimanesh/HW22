@@ -1,6 +1,7 @@
 ﻿@using App.Domain.Core.Entities
 @using App.Domain.Core.Task.UserT
-@model UserTa
+
+@model RegisterViewModel
 <div class="page">
    
     @if (!ViewData.ModelState.IsValid)
@@ -20,12 +21,14 @@
         <h4>ثبت نام </h4><br>
 
 
-        <input placeholder="نام کاربری" type="text" asp-for="UserName" ><br>
-        <span class="text-danger" asp-validation-for="UserName"></span>
+        <input placeholder="نام کاربری" type="text" asp-for="Username" ><br>
+        <span class="text-danger" asp-validation-for="Username"></span>
         <input placeholder="ایمیل" type="text" asp-for="Email"><br>
         <span class="text-danger" asp-validation-for="Email"></span>
-        <input placeholder="رمز عبور" type="password" asp-for="PasswordHash" ><br><br>
-        <span class="text-danger" asp-validation-for="PasswordHash"></span>
+        <input placeholder="رمز عبور" type="password" asp-for="Password" ><br>
+        <span class="text-danger" asp-validation-for="Password"></span>
+        <input placeholder="تکرار رمز عبور" type="password" asp-for="ConfirmPassword"><br><br>
+        <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
         <button type="send" class="register-btn">ثبت نام</button>
 
         

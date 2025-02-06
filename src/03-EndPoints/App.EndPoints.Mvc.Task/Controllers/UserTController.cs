@@ -1,6 +1,6 @@
 ﻿using App.Domain.Core.Entities;
 using App.Domain.Core.Task.UserT.AppServices;
-
+using App.EndPoints.Mvc.Task.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,17 +25,18 @@ namespace App.EndPoints.Mvc.Task.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Register(UserTa user, CancellationToken cToken)
+        public async Task<IActionResult> Register(RegisterViewModel user, CancellationToken cToken)
         {
             if (!ModelState.IsValid)
                 return View(user);
-            if (string.IsNullOrWhiteSpace(user.PasswordHash)|| string.IsNullOrWhiteSpace(user.UserName) || string.IsNullOrWhiteSpace(user.Email))
+            if (string.IsNullOrWhiteSpace(user.Password)|| string.IsNullOrWhiteSpace(user.Username) || string.IsNullOrWhiteSpace(user.Email))
             {
                 ModelState.AddModelError(string.Empty, "فیلدهای خالی رو پر کنید.");
                 return View(user);
             }
-            var result = await _UserTAppServices.Register(user, cToken);
-
+            var user1 = new UserTa { UserName = user.Username, Email = user.Email ,PasswordHash=user.Password};
+            var result = await _UserTAppServices.Register(user1, cToken);
+            
             if (result.Succeeded)
             {
                

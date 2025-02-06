@@ -35,6 +35,7 @@ builder.Services.AddIdentity<UserTa, IdentityRole<int>>(option =>
     option.Password.RequireNonAlphanumeric = false;
     option.Password.RequireUppercase = false;
     option.Password.RequireLowercase = false;
+   
     option.User.RequireUniqueEmail = true;
 
 })
